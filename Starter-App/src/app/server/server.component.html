@@ -1,14 +1,30 @@
-<div class="well">
-    <h2>Author Name: {{ author_name }}</h2>
-    <img src="" class="img-rounded" />
-    <p>
-      {{ about_author }}
-    </p>
-    <a
-      href="https://en.wikipedia.org/wiki/Chuck_Norris"
-      class="btn btn-default"
-      target="_blank"
-      >Read more</a
-    >
+<div class="row">
+  <div class="col-sm-3">
+    <input
+      class="form-control text"
+      [(ngModel)]="serverId"
+      placeholder="Enter Server Id"
+    />
   </div>
-  <div class="list-group"></div>
+  <div class="col-xs-3" style="float: left">
+    <button
+      class="btn btn-success start-server"
+      style="border-radius: 0px"
+      [disabled]="isRunning"
+      (click)="toggleServerStatus()"
+    >
+      Start Server
+    </button>
+    <button
+      class="btn btn-danger stop-server"
+      style="border-radius: 0px"
+      [disabled]="!isRunning"
+      (click)="toggleServerStatus()"
+    >
+      Stop Server
+    </button>
+  </div>
+</div>
+<h4 class="server-message" style="margin-top: 10px">
+  Server with ID {{ serverId }} is {{ getServerStatus() }}
+</h4>

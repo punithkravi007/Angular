@@ -1,3 +1,43 @@
-<div class="container" style="padding: 10px">
-  <app-server></app-server>
+<div class="container" style="padding: 10px; border: 1px solid">
+  <div class="well">
+    <h2>
+      Assignment-01 : <span class="app-name">{{ assignment_1 }}</span>
+    </h2>
+    <img src="" class="img-rounded" />
+    <p>
+      Carlos Ray "Chuck" Norris is an American martial artist, actor, film
+      producer, and screenwriter. After serving in the United States Air Force,
+      Norris won many martial arts championships and later founded his own
+      discipline Chun Kuk Do
+    </p>
+  </div>
+  <app-success-alert></app-success-alert>
+</div>
+<div
+  class="container"
+  style="padding: 10px; border: 1px solid; margin-top: 10px"
+>
+  <div class="well">
+    <h2>
+      Assignment-02 : <span class="app-name">{{ assignment_2 }}</span>
+    </h2>
+    <img src="" class="img-rounded" />
+    <ol>
+      <li>
+        Add a input field which updates a property(username) via Two-Way-Binding
+      </li>
+      <li>
+        Output the username property using String Interpolation( in a paragraph
+        below the input)
+      </li>
+      <li>
+        Adds a button which may only be clicked if the username is not an empty
+        string
+      </li>
+      <li>
+        Upon the clicking the button, username should reset to empty string
+      </li>
+    </ol>
+  </div>
+  <app-warning-alert></app-warning-alert>
 </div>
