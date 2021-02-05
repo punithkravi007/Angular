@@ -3,18 +3,14 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { ServerComponent } from './server/server.component';
-import { WarningAlertComponent } from './warning-alert/warning-alert.component';
-import { SuccessAlertComponent } from './success-alert/success-alert.component';
-import { UserComponent } from './user/user.component';
+import { Assignment01Component } from './assignment01/assignment01.component';
+import { Assignment02Component } from './assignment02/assignment02.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ServerComponent,
-    WarningAlertComponent,
-    SuccessAlertComponent,
-    UserComponent
+    Assignment01Component,
+    Assignment02Component
   ],
   imports: [BrowserModule, FormsModule],
   providers: [],

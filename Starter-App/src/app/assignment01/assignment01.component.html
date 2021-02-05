@@ -1,0 +1,62 @@
+<div class="container" style="padding: 10px; border: 1px solid">
+  <div class="well">
+    <h2>
+      <u>Assignment-01 :</u> <span class="app-name">{{ assignmentName }}</span>
+    </h2>
+    <img src="" class="img-rounded" />
+      <ol>
+        <li>Add Server and Remove Server</li>
+        <li>Start or Stop server</li>
+        <li>Display the Server ID and Status below</li>
+      </ol>
+  </div>
+  <div
+    class="alert alert-primary"
+    role="alert"
+    style="padding: 10px; background-color: gainsboro"
+  >
+    <div class="row">
+      <div class="col-sm-2">
+        <input
+          class="form-control text"
+          [(ngModel)]="serverId"
+          placeholder="Enter Server Id"
+        />
+      </div>
+      <div class="col-sm-4">
+        <button
+          *ngIf="!isServerAdded && serverId"
+          class="btn btn-primary server-btn"
+          (click)="addOrRemoveServer()"
+        >
+          Add Server
+        </button>
+        <button
+          *ngIf="isServerAdded"
+          class="btn btn-danger server-btn"
+          (click)="addOrRemoveServer()"
+        >
+          Remove Server
+        </button>
+        <button
+          *ngIf="!isRunning && isServerAdded"
+          class="btn btn-success server-btn start-server"
+          (click)="toggleServerStatus()"
+        >
+          Start Server
+        </button>
+        <button
+          *ngIf="isRunning"
+          class="btn btn-danger server-btn stop-server"
+          (click)="toggleServerStatus()"
+        >
+          Stop Server
+        </button>
+      </div>
+    </div>
+    <h4 class="server-message" style="margin-top: 10px" *ngIf="isServerAdded">
+      Server with ID : {{ serverId }} is added and it's status is :
+      {{ getServerStatus() }}
+    </h4>
+  </div>
+</div>
