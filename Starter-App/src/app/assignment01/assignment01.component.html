@@ -26,14 +26,15 @@
       </div>
       <div class="col-sm-4">
         <button
-          *ngIf="!isServerAdded && serverId"
+          *ngIf="!isServerAdded"
+          [disabled] = "!serverId"
           class="btn btn-primary server-btn"
           (click)="addOrRemoveServer()"
         >
           Add Server
         </button>
         <button
-          *ngIf="isServerAdded"
+          *ngIf="isServerAdded && serverId"
           class="btn btn-danger server-btn"
           (click)="addOrRemoveServer()"
         >
@@ -55,9 +56,14 @@
         </button>
       </div>
     </div>
-    <h4 class="server-message" style="margin-top: 10px" *ngIf="isServerAdded">
+    <div class="alert alert-success server-message" style="margin-top: 10px" *ngIf="isServerAdded; else noServerAdded">
       Server with ID : {{ serverId }} is added and it's status is :
       {{ getServerStatus() }}
-    </h4>
+    </div>
+    <ng-template #noServerAdded>
+      <div class="alert alert-danger server-message" style="margin-top: 10px">
+        No Server is added
+      </div>
+    </ng-template>
   </div>
 </div>
