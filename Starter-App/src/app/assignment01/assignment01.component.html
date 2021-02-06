@@ -56,12 +56,12 @@
         </button>
       </div>
     </div>
-    <div class="alert alert-success server-message" style="margin-top: 10px" *ngIf="isServerAdded; else noServerAdded">
+    <div class="alert alert-success server-message" [ngStyle]="{backgroundColor: getServerStatus()[1]}" *ngIf="isServerAdded; else noServerAdded">
       Server with ID : {{ serverId }} is added and it's status is :
-      {{ getServerStatus() }}
+      {{ getServerStatus()[0] }}
     </div>
     <ng-template #noServerAdded>
-      <div class="alert alert-danger server-message" style="margin-top: 10px">
+      <div class="alert alert-danger server-message">
         No Server is added
       </div>
     </ng-template>

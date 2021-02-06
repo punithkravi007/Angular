@@ -1,6 +1,7 @@
 .server-message{
     font-weight: bold;
     color: black;
+    margin-top: 10px;
 }
 .text{
     border-radius: 0px;

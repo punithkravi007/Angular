@@ -18,7 +18,7 @@ export class Assignment01Component implements OnInit {
   ngOnInit(): void {}
 
   getServerStatus() {
-    return this.isRunning ? "Running..." : "Stopped!";
+    return this.isRunning ? ["Running...", "darkseagreen"] : ["Stopped!", "red"];
   }
 
   toggleServerStatus(){
