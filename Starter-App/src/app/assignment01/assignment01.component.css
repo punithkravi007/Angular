@@ -9,3 +9,6 @@
 .server-btn{
     border-radius: 0px;
 }
+.serverRunning{
+    background-color:#dff0d8;
+}

@@ -4,12 +4,12 @@
       <u>Assignment-01 :</u> <span class="app-name">{{ assignmentName }}</span>
     </h2>
     <img src="" class="img-rounded" />
-      <ol>
-        <li>Enter Server Name and Add Server</li>
-        <li>Remove Server and on removing empty the Id </li>
-        <li>Start or Stop Server</li>
-        <li>Display the Server ID and Status below</li>
-      </ol>
+    <ol>
+      <li>Enter Server Name and Add Server</li>
+      <li>Remove Server and on removing empty the Id</li>
+      <li>Start or Stop Server</li>
+      <li>Display the Server ID and Status below</li>
+    </ol>
   </div>
   <div
     class="alert alert-primary"
@@ -24,46 +24,66 @@
           placeholder="Enter Server Id"
         />
       </div>
+      <div class="col-sm-2">
+        <input
+          class="form-control text"
+          [(ngModel)]="serverPort"
+          placeholder="Server Port"
+        />
+      </div>
+      <div class="col-sm-4">
+        <input
+          class="form-control text"
+          [(ngModel)]="serverDescription"
+          placeholder="Server Description"
+        />
+      </div>
       <div class="col-sm-4">
         <button
-          *ngIf="!isServerAdded"
-          [disabled] = "!serverId"
+          [disabled]="!serverId || !serverPort || !serverDescription"
           class="btn btn-primary server-btn"
-          (click)="addOrRemoveServer()"
+          (click)="addServer()"
         >
           Add Server
         </button>
-        <button
-          *ngIf="isServerAdded && serverId"
-          class="btn btn-danger server-btn"
-          (click)="addOrRemoveServer()"
-        >
-          Remove Server
-        </button>
-        <button
-          *ngIf="!isRunning && isServerAdded"
-          class="btn btn-success server-btn start-server"
-          (click)="toggleServerStatus()"
-        >
-          Start Server
-        </button>
-        <button
-          *ngIf="isRunning"
-          class="btn btn-danger server-btn stop-server"
-          (click)="toggleServerStatus()"
-        >
-          Stop Server
-        </button>
       </div>
     </div>
-    <div class="alert alert-success server-message" [ngStyle]="{backgroundColor: getServerStatus()[1]}" *ngIf="isServerAdded; else noServerAdded">
-      Server with ID : {{ serverId }} is added and it's status is :
-      {{ getServerStatus()[0] }}
+    <div
+      class="alert alert-danger server-message"
+      [ngClass]="{ serverRunning: server.isRunning === true }"
+      *ngFor="let server of servers"
+    >
+      <div class="row">
+        <div class="col-sm-6">
+          <ol>
+            <li>Sever Id : {{ server.id }}</li>
+            <li>Server Port : {{server.port}}</li>
+            <li>Server Description : {{server.description}}</li>
+            <li>Server Status : {{ server.getServerStatus() }}</li>
+          </ol>
+        </div>
+        <div class="col-sm-6">
+          <button
+            class="btn btn-danger"
+            style="float: right; border-radius: 0px"
+            *ngIf="server.isRunning"
+            (click)="server.toggleServerStatus()"
+          >
+            Stop Server
+          </button>
+          <button
+            class="btn btn-success"
+            style="float: right; border-radius: 0px"
+            *ngIf="!server.isRunning"
+            (click)="server.toggleServerStatus()"
+          >
+            Start Server
+          </button>
+        </div>
+      </div>
     </div>
     <ng-template #noServerAdded>
-      <div class="alert alert-danger server-message">
-        No Server is added
-      </div>
+      <div class="alert alert-danger server-message">No Server is added</div>
     </ng-template>
   </div>
 </div>
