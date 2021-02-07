@@ -66,6 +66,13 @@
           <button
             class="btn btn-danger"
             style="float: right; border-radius: 0px"
+            (click)="removeServer(server)"
+          >
+            Remove Server
+          </button>
+          <button
+            class="btn btn-danger"
+            style="float: right; border-radius: 0px"
             *ngIf="server.isRunning"
             (click)="server.toggleServerStatus()"
           >

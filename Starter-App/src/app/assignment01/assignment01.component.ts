@@ -34,6 +34,17 @@ export class Assignment01Component implements OnInit {
   addServer() {
     let server: any = new this.Server(this.serverId, false, this.serverPort, this.serverDescription);
     this.servers.push(server);
+    this.clearEntry();
+  }
+  
+  removeServer(server){
+    let serverIndex = this.servers.indexOf(server);
+    if (serverIndex !== -1) this.servers.splice(serverIndex, 1);
+  }
+  
+  clearEntry(){
     this.serverId = '';
+    this.serverPort = '';
+    this.serverDescription = ''
   }
 }
