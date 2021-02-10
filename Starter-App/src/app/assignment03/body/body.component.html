@@ -1,0 +1,31 @@
+<div
+  class="alert alert-primary"
+  role="alert"
+  style="padding: 10px; background-color: darkkhaki"
+>
+  <app-create-server-element
+    (createServerEvent)="addServer($event)"
+    (createBlueprintEvent)="addBlueprint($event)"
+  ></app-create-server-element>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="panel panel-success">
+        <div class="panel-heading"><b>Servers</b></div>
+        <div class="panel-body">
+          <app-server
+            *ngFor="let server of serverList"
+            [serverElement]="server"
+          ></app-server>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="panel panel-info">
+        <div class="panel-heading"><b>Blueprints</b></div>
+        <div class="panel-body">
+          <app-blueprint *ngFor="let blueprint of blueprintList" [blueprint] ="blueprint" ></app-blueprint>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
