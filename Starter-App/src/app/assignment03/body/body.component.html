@@ -15,7 +15,8 @@
           <app-server
             *ngFor="let server of serverList"
             [serverElement]="server"
-          ></app-server>
+          >
+          </app-server>
         </div>
       </div>
     </div>
@@ -23,7 +24,10 @@
       <div class="panel panel-info">
         <div class="panel-heading"><b>Blueprints</b></div>
         <div class="panel-body">
-          <app-blueprint *ngFor="let blueprint of blueprintList" [blueprint] ="blueprint" ></app-blueprint>
+          <app-blueprint
+            *ngFor="let blueprint of blueprintList"
+            [blueprint]="blueprint"
+          ></app-blueprint>
         </div>
       </div>
     </div>

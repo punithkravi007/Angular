@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-create-server-element',
@@ -16,23 +16,27 @@ export class CreateServerElementComponent implements OnInit {
     blueprintDescription: string;
   }>();
 
-  serverElementName: string;
-  serverElementDescription: string;
+  @ViewChild('serverElementDescription') serverElementDescription : ElementRef;
 
   constructor() {}
 
   ngOnInit(): void {}
-  addServer() {
+
+  addServer(
+    serverElementName: HTMLInputElement,
+  ) {
     this.createServerEvent.emit({
-      serverName: this.serverElementName,
-      serverDescription: this.serverElementDescription,
+      serverName: serverElementName.value,
+      serverDescription: this.serverElementDescription.nativeElement.value,
     });
   }
 
-  addBlueprint() {
+  addBlueprint(
+    serverElementName: HTMLInputElement,
+  ) {
     this.createBlueprintEvent.emit({
-      blueprintName: this.serverElementName,
-      blueprintDescription: this.serverElementDescription,
+      blueprintName: serverElementName.value,
+      blueprintDescription: this.serverElementDescription.nativeElement.value,
     });
   }
 }

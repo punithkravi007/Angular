@@ -6,7 +6,7 @@
           type="text"
           class="form-control"
           placeholder="Enter Server Name"
-          [(ngModel)]="serverElementName"
+          #serverElementName
         />
       </div>
       <div class="col-xs-3">
@@ -14,21 +14,21 @@
           type="text"
           class="form-control"
           placeholder="Enter Server Description"
-          [(ngModel)]="serverElementDescription"
+          #serverElementDescription
         />
       </div>
       <div class="col-xs-3">
         <button
           class="btn btn-success"
           [disabled]="!serverElementName || !serverElementDescription"
-          (click)="addServer()"
+          (click)="addServer(serverElementName)"
         >
           Add Server
         </button>
         <button
           class="btn btn-primary"
           [disabled]="!serverElementName || !serverElementDescription"
-          (click)="addBlueprint()"
+          (click)="addBlueprint(serverElementName)"
         >
           Add Blueprint
         </button>

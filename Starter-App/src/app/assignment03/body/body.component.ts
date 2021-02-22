@@ -1,17 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { 
+Component, 
+OnChanges, 
+OnInit
+} from '@angular/core';
 
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
   styleUrls: ['./body.component.css'],
 })
-export class BodyComponent implements OnInit {
+export class BodyComponent implements OnInit{
   serverList = [];
   blueprintList = [];
 
-  constructor() {}
+  constructor() {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   addServer(event: { serverName: string; serverDescription: string }) {
     this.serverList.push({
