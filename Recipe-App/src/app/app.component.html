@@ -1,6 +1,10 @@
-<app-header></app-header>
-<div class="container-fluid" style="margin-bottom: 100px;margin-top: 100px;">
-  <app-recipes></app-recipes>
-  <hr>
-  <app-shopping-list></app-shopping-list>
+<app-header (toggleScreenEvent)="onToggleScreen($event)"></app-header>
+<div class="container-fluid" style="margin-bottom: 100px; margin-top: 100px">
+  <app-recipes
+    *ngIf="featureScreen == 'Recipe'; else shoppingList"
+  ></app-recipes>
+  <hr />
+  <ng-template #shoppingList>
+    <app-shopping-list></app-shopping-list>
+  </ng-template>
 </div>

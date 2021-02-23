@@ -1,1 +1,14 @@
-<p>recipe works!</p>
+<a
+  href="#"
+  class="list-group-item clearfix"
+  style="margin-top: 5px; border-radius: 0px"
+  (click) = "showRecipieDetails()"
+>
+  <div class="pull-left">
+    <h4 class="list-group-item-heading"><b>{{recipe.name}}</b></h4>
+    <p class="list-group-item-text">{{recipe.description}}</p>
+  </div>
+  <div class="pull-right">
+    <img style="max-height: 50px; max-width: 50px" [src]="recipe.image" />
+  </div>
+</a>
