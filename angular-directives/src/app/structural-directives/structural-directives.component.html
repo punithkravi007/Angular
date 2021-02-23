@@ -1,0 +1,133 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <strong> Structural Directives</strong>
+        <ul></ul>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <strong>*ngIf and *ngIf-else</strong>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <button
+                      class="btn btn-info"
+                      *ngIf="!isServerRunning"
+                      (click)="isServerRunning = !isServerRunning"
+                    >
+                      Start Server
+                    </button>
+                    <button
+                      class="btn btn-danger"
+                      *ngIf="isServerRunning"
+                      (click)="isServerRunning = !isServerRunning"
+                    >
+                      Stop Server
+                    </button>
+                  </div>
+                </div>
+                <br />
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div
+                      class="alert alert-danger"
+                      *ngIf="!isServerRunning; else serverRunningAlert"
+                    >
+                      Server is Stopped
+                    </div>
+                    <ng-template #serverRunningAlert>
+                      <div class="alert alert-success">
+                        Server is Running...
+                      </div>
+                    </ng-template>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="panel panel-warning">
+              <div class="panel-heading"><strong>*ngFor</strong></div>
+              <div class="panel-body">
+                <div
+                  appFontSizeDirective
+                  class="alert alert-primary"
+                  *ngFor="let number of numbers"
+                  style="background-color: gainsboro"
+                >
+                  {{ number }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="panel panel-warning">
+      <div class="panel-heading">
+        <strong> Attribute Directives</strong>
+        <ul></ul>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="panel panel-danger">
+              <div class="panel-heading">
+                <strong>ngClass Attribute Directive</strong>
+              </div>
+              <div class="panel-body">
+                <div
+                  appFontSizeDirective
+                  class="alert alert-primary"
+                  *ngFor="let number of numbers"
+                  [ngClass]="{ odd: number % 2 != 0, even: number % 2 == 0 }"
+                >
+                  {{ number }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <strong>ngStyle Attribute Directive</strong>
+              </div>
+              <div class="panel-body">
+                <div
+                  appFontSizeDirective
+                  class="alert alert-primary"
+                  *ngFor="let number of numbers"
+                  [ngStyle]="{
+                    backgroundColor: number % 2 != 0 ? 'coral' : 'yellowgreen'
+                  }"
+                >
+                  {{ number }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr />
+<div class="panel panel-danger">
+  <div class="panel-heading">
+    <strong>Custom Attribute Directive</strong>
+  </div>
+  <div class="panel-body">
+    <p customBackgroundColor>I have styled using custom directive</p>
+    <br />
+    <p appFontSizeDirective>
+      My font-size, border and padding is set by using custom directive
+    </p>
+  </div>
+</div>

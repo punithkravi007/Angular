@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Ingredient } from '../ingredient/ingredient.model';
 
 @Component({
@@ -6,20 +6,19 @@ import { Ingredient } from '../ingredient/ingredient.model';
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.css'],
 })
-export class ShoppingListComponent implements OnInit {
-  ingredientList: Ingredient[] = [
-    new Ingredient("Apple", 10),
-    new Ingredient("Orange", 20),
-    new Ingredient("Carrot", 5),
-    new Ingredient("Potato", 12)
-  ];
+export class ShoppingListComponent implements OnInit, OnDestroy {
+  ingredientList: Ingredient[] = [];
 
   constructor() {}
 
   ngOnInit(): void {}
 
+  ngOnDestroy(){
+    console.log("Destroying");
+    
+  }
+
   addIngredient(ingredient: Ingredient) {
-    alert(ingredient)
     this.ingredientList.push(ingredient);
   }
 }
