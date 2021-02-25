@@ -1,3 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="btn-group" appDropdown>
+      <button
+        type="button"
+        class="btn btn-primary dropdown-toggle"
+        data-toggle="dropdown"
+      >
+        Manage
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Tablet</a></li>
+        <li><a href="#">Smartphone</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<br>
 <div class="row">
   <div class="col-sm-6">
     <div class="panel panel-success">
@@ -87,7 +106,10 @@
                   appFontSizeDirective
                   class="alert alert-primary"
                   *ngFor="let number of numbers"
-                  [ngClass]="{ odd: number % 2 != 0, even: number % 2 == 0 }"
+                  [ngClass]="{
+                    odd: number % 2 != 0,
+                    even: number % 2 == 0
+                  }"
                 >
                   {{ number }}
                 </div>
@@ -105,7 +127,8 @@
                   class="alert alert-primary"
                   *ngFor="let number of numbers"
                   [ngStyle]="{
-                    backgroundColor: number % 2 != 0 ? 'coral' : 'yellowgreen'
+                    backgroundColor: number % 2 != 0 ? 'coral' : 'yellowgreen',
+                    color: number % 2 != 0 ? 'red' : 'green'
                   }"
                 >
                   {{ number }}
@@ -119,15 +142,60 @@
   </div>
 </div>
 <hr />
-<div class="panel panel-danger">
-  <div class="panel-heading">
-    <strong>Custom Attribute Directive</strong>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <strong>Custom Structural Directive</strong>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <button
+              class="btn btn-info"
+              *appUnless="!isServerRunning"
+              (click)="isServerRunning = !isServerRunning"
+            >
+              Start Server
+            </button>
+            <button
+              class="btn btn-danger"
+              *appUnless="isServerRunning"
+              (click)="isServerRunning = !isServerRunning"
+            >
+              Stop Server
+            </button>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-sm-12">
+            <div
+              class="alert alert-danger"
+              *ngIf="!isServerRunning; else serverRunningAlert"
+            >
+              Server is Stopped
+            </div>
+            <ng-template #serverRunningAlert>
+              <div class="alert alert-success">Server is Running...</div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="panel-body">
-    <p customBackgroundColor>I have styled using custom directive</p>
-    <br />
-    <p appFontSizeDirective>
-      My font-size, border and padding is set by using custom directive
-    </p>
+  <div class="col-sm-6">
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+        <strong>Custom Attribute Directive</strong>
+      </div>
+      <div class="panel-body">
+        <p customBackgroundColor>I have styled using custom directive</p>
+        <br />
+        <p appFontSizeDirective>
+          My font-size, border and padding is set by using custom directive
+        </p>
+      </div>
+    </div>
   </div>
 </div>

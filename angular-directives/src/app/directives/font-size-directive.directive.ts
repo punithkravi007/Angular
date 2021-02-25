@@ -12,7 +12,9 @@ import {
 export class FontSizeDirectiveDirective implements OnInit {
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
 
   @HostListener('mouseenter')
   mouseover(eventData: Event) {
