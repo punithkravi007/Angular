@@ -17,17 +17,13 @@ export class NewAccountComponent {
   @ViewChild("accountName") accountName: ElementRef;
   @ViewChild("status") accountStatus: ElementRef;
 
-  constructor(
-    private logging: LoggingService,
-    private accountService: AccountService
-  ) {}
+  constructor(private accountService: AccountService) {}
 
   onCreateAccount() {
     this.accountService.addAccount(
       this.accountName.nativeElement.value,
       this.accountStatus.nativeElement.value
     );
-    this.logging.logStatus(this.accountStatus.nativeElement.value);
     this.clearEntry();
   }
 

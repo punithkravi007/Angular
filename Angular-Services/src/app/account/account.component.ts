@@ -11,13 +11,9 @@ export class AccountComponent {
   @Input() account: { name: string; status: string };
   @Input() id: number;
 
-  constructor(
-    private logging: LoggingService,
-    private accountService: AccountService
-  ) {}
+  constructor(private accountService: AccountService) {}
 
   onSetTo(status: string) {
     this.accountService.changeAccountStatus(this.id, status);
-    this.logging.logStatus(status);
   }
 }
