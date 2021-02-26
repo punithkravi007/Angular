@@ -8,9 +8,10 @@ export class ShoppingListService {
   ingredientList: Ingredient[] = [];
 
   addIngredient(ingredient: Ingredient) {
+    ingredient = new Ingredient(ingredient.name, ingredient.quantity);
     if (this.ingredientList.length > 0) {
-      let counter = 0;
-      let index = 0;
+      let counter = 0,
+        index = 0;
       for (let i = 0; i < this.ingredientList.length; i++) {
         if (this.ingredientList[i].name === ingredient.name) {
           counter = counter + 1;
