@@ -1,28 +1,31 @@
-<div class="row">
-  <div class="col-xs-12">
-    <img
-      class="image-responsive"
-      [src]="recipe.image"
-      style="width: 600px;max-width: 600px;"
-    />
-  </div>
-</div>
-<hr />
-<div class="row">
-  <div class="col-xs-12">
-    <h3>{{recipe.name}}</h3>
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    <p>
-      {{recipe.description}}
-    </p>
-  </div>
-</div>
-<div class="row">
+<div class="alert alert-warning" style="border-radius: 0px; color: black" *ngIf="recipe">
+  <div class="row" >
     <div class="col-xs-12">
-      <button class="btn btn-success" style="float: left;border-radius: 0px;">Order Now</button>
+      <img
+        class="image-responsive"
+        [src]="recipe.image"
+        style="width: 600px; max-width: 600px"
+      />
     </div>
   </div>
-  
+  <hr />
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>{{ recipe.name }}</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <p>
+        {{ recipe.description }}
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-success" style="float: left; border-radius: 0px">
+        Order Now
+      </button>
+    </div>
+  </div>
+</div>

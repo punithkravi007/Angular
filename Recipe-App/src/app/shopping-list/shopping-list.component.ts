@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Ingredient } from '../ingredient/ingredient.model';
+import { ShoppingListService } from './shopping-list.service';
 
 @Component({
   selector: 'app-shopping-list',
@@ -7,18 +8,16 @@ import { Ingredient } from '../ingredient/ingredient.model';
   styleUrls: ['./shopping-list.component.css'],
 })
 export class ShoppingListComponent implements OnInit, OnDestroy {
-  ingredientList: Ingredient[] = [];
+  ingredientList: any;
 
-  constructor() {}
+  constructor(private shoppingListService: ShoppingListService) {}
 
-  ngOnInit(): void {}
-
-  ngOnDestroy(){
-    console.log("Destroying");
-    
+  ngOnInit(): void {
+    this.ingredientList = this.shoppingListService.ingredientList;
   }
 
-  addIngredient(ingredient: Ingredient) {
-    this.ingredientList.push(ingredient);
+  ngOnDestroy() {
+    console.log('Destroying');
   }
+  
 }

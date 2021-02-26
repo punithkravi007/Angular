@@ -5,15 +5,10 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-sm-6">
-        <app-recipes-list (displayRecipeInfoEvent)="displayRecipeInfo($event)"></app-recipes-list>
+        <app-recipes-list></app-recipes-list>
       </div>
       <div class="col-sm-6">
-        <div *ngIf="recipe"
-          class="alert alert-warning"
-          style="border-radius: 0px; color: black"
-        >
-          <app-recipes-info  [recipe]="recipe"></app-recipes-info>
-        </div>
+        <app-recipes-info></app-recipes-info>
       </div>
     </div>
   </div>
