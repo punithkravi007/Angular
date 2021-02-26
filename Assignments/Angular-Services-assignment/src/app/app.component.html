@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <app-create-user></app-create-user>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <app-active-users
+        *ngIf="activeUsers.length > 0"
+        [users]="activeUsers"
+      ></app-active-users>
+      <app-inactive-users
+        *ngIf="inactiveUsers.length > 0"
+        [users]="inactiveUsers"
+      ></app-inactive-users>
+    </div>
+  </div>
+</div>

@@ -1,12 +1,6 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  Output,
-  ViewChild,
-} from "@angular/core";
+import { Component, ElementRef, ViewChild } from "@angular/core";
 import { AccountService } from "../service/account.service";
-import { LoggingService } from "../service/logging.service";
+import { Account } from "../model/account";
 
 @Component({
   selector: "app-new-account",
@@ -20,10 +14,11 @@ export class NewAccountComponent {
   constructor(private accountService: AccountService) {}
 
   onCreateAccount() {
-    this.accountService.addAccount(
+    const account = new Account(
       this.accountName.nativeElement.value,
       this.accountStatus.nativeElement.value
     );
+    this.accountService.addAccount(account);
     this.clearEntry();
   }
 
