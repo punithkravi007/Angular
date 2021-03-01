@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="alert alert-warning">
+              <app-create-servers></app-create-servers>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <app-active-servers
+                  [activeServers]="activeServers"
+                ></app-active-servers>
+              </div>
+              <div class="col-sm-6">
+                <app-inactive-servers
+                [inActiveServers]="inActiveServers"
+                ></app-inactive-servers>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

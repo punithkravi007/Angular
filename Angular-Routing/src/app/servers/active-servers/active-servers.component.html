@@ -1,0 +1,25 @@
+<div class="panel panel-info">
+  <div class="panel-heading">Active/Running Servers</div>
+  <div class="panel-body">
+    <div class="row" *ngFor="let server of servers; let i = index">
+      <div class="col-sm-9">
+        <div
+          [routerLink]="['/servers' , 'Active', i]"
+          class="alert alert-success"
+          style="
+            padding: 6px;
+            background-color: transparent;
+            width: 255px;
+            border-radius: 0px;
+            cursor: pointer;
+          "
+        >
+          {{server.name}}
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <button class="btn btn-danger" style="border-radius: 0px" (click)="stopServer(i)">Stop</button>
+      </div>
+    </div>
+  </div>
+</div>
