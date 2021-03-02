@@ -20,12 +20,11 @@ export class ServerInfoComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((request: Params) => {
       let id = parseInt(request["id"]);
-      let serverStatus = request["status"];
-      this.server = this.serverService.getServerById(id, serverStatus);
-      if (!this.server) {
+      this.server = this.serverService.getServerById(id);
+      if (this.server === undefined) {
         this.router.navigate(["servers"]);
       }
-      this.isActive = serverStatus === "Active" ? true : false;
+      this.isActive = this.server.status === "active" ? true : false;
     });
   }
 }

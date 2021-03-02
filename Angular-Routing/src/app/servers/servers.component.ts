@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnChanges, OnInit } from "@angular/core";
 import { Server } from "./server.model";
 import { ServersService } from "./servers.service";
 
@@ -14,7 +14,12 @@ export class ServersComponent implements OnInit {
   constructor(private serversService: ServersService) {}
 
   ngOnInit() {
-    this.activeServers = this.serversService.activeServers;
-    this.inActiveServers = this.serversService.inActiveServers;
+    this.activeServers = this.serversService.getActiveServers();
+    this.inActiveServers = this.serversService.getInActiveServers();
+    
+    this.serversService.onServerChangeEvent.subscribe(() => {
+      this.activeServers = this.serversService.getActiveServers();
+      this.inActiveServers = this.serversService.getInActiveServers();
+    });
   }
 }

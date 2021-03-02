@@ -12,11 +12,13 @@ import { ActiveServersComponent } from './servers/active-servers/active-servers.
 import { InactiveServersComponent } from './servers/inactive-servers/inactive-servers.component';
 import { CreateServersComponent } from './servers/create-servers/create-servers.component';
 import { ServerInfoComponent } from './servers/server-info/server-info.component';
+import { EditServerComponent } from './servers/edit-server/edit-server.component';
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
   { path: "servers", component: ServersComponent },
-  { path: "servers/:status/:id", component: ServerInfoComponent },
+  { path: "servers/:id", component: ServerInfoComponent },
+  { path: "servers/:id/edit", component: EditServerComponent },
   { path: "users", component: UsersComponent },
 ];
 
@@ -31,6 +33,7 @@ const appRoutes: Routes = [
     InactiveServersComponent,
     CreateServersComponent,
     ServerInfoComponent,
+    EditServerComponent,
   ],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
   providers: [ServersService],

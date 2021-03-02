@@ -1,11 +1,13 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-12">
-      <div *ngIf="server"
+      <div
+        *ngIf="server"
         class="panel"
         [ngClass]="isActive ? 'panel-success' : 'panel-danger'"
       >
-        <div class="panel-heading">Server Status :
+        <div class="panel-heading">
+          Server Status :
           <b *ngIf="!isActive">Stopped/ In-Active</b>
           <b *ngIf="isActive">Running/Active</b>
         </div>
@@ -18,6 +20,18 @@
           <div class="row">
             <div class="col-sm-3"><b>Server Description :</b></div>
             <div class="col-sm-9">{{ server.description }}</div>
+          </div>
+          <div class="row">
+            <div class="col-sm-3">
+              <button
+                class="btn btn-warning"
+                style="border-radius: 0px; height: 35px;margin-top: 10px;"
+                [routerLink]="['/servers', 0, 'edit']"
+                [queryParams]="{name : server.name, description : server.description}"
+              >
+                Edit Details
+              </button>
+            </div>
           </div>
         </div>
         <div class="panel-footer">

@@ -34,7 +34,8 @@ export class CreateServersComponent implements OnInit, OnDestroy {
     this.serverService.addNewServer(
       new Server(
         this.serverName.nativeElement.value,
-        this.serverDescription.nativeElement.value
+        this.serverDescription.nativeElement.value,
+        "active"
       )
     );
   }

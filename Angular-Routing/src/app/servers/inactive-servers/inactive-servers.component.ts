@@ -14,6 +14,6 @@ export class InactiveServersComponent implements OnInit {
   ngOnInit(): void {}
 
   startServer(i: number) {
-    this.serverService.toggleServerStatus(i, "In-Active");
+    this.serverService.toggleServerStatus(i, "active");
   }
 }

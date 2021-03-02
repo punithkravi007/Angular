@@ -1,3 +1,8 @@
 export class Server {
-  constructor(private name: string, private description : string) {}
+  public id: number;
+  constructor(
+    public name: string,
+    public description: string,
+    public status: string
+  ) {}
 }

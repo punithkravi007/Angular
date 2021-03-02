@@ -1,34 +1,45 @@
-import { Injectable } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
 import { Server } from "./server.model";
 
 @Injectable({
   providedIn: "root",
 })
 export class ServersService {
-  activeServers: Server[] = [];
-  inActiveServers: Server[] = [];
+  serverId: number = 0;
+  servers: Server[] = [];
+  onServerChangeEvent = new EventEmitter<void>();
 
   addNewServer(server: Server) {
-    this.activeServers.push(server);
+    server.id = this.serverId;
+    this.servers.push(server);
+    this.serverId += 1;
+    this.onServerChangeEvent.emit();
   }
 
-  getServerById(id: number, serverStatus: string) {
-    if (serverStatus === "Active")
-      return this.activeServers[id];
-    else return this.inActiveServers[id];
+  getActiveServers() {
+    return this.servers.filter((server: Server) => {
+      return server.status == "active";
+    });
   }
 
-  toggleServerStatus(index: number, currentStatus: string) {
-    if (currentStatus === "Active") {
-      let server: Server = this.activeServers[index];
-      this.activeServers.splice(index, 1);
-      this.inActiveServers.push(server);
-      console.log(server);
-      console.log(this.inActiveServers);
-    } else {
-      let server: Server = this.inActiveServers[index];
-      this.inActiveServers.splice(index, 1);
-      this.activeServers.push(server);
-    }
+  getInActiveServers() {
+    return this.servers.filter((server: Server) => {
+      return server.status == "in-active";
+    });
+  }
+
+  toggleServerStatus(index: number, status: string) {
+    this.servers[index].status = status;
+    this.onServerChangeEvent.emit();
+  }
+
+  getServerById(index: number) {
+    return this.servers.find((server: Server) => {
+      return server.id == index;
+    });
+  }
+
+  updateServerInfo(server: Server) {
+    this.servers[server.id] = server;
   }
 }

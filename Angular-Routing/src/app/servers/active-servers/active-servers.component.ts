@@ -18,6 +18,6 @@ export class ActiveServersComponent implements OnInit {
   }
 
   stopServer(i: number) {
-    this.serverService.toggleServerStatus(i, "Active");
+    this.serverService.toggleServerStatus(i, "in-active");
   }
 }

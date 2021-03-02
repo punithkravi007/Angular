@@ -1,10 +1,10 @@
 <div class="panel panel-danger">
   <div class="panel-heading">In-Active/Stopped Servers</div>
   <div class="panel-body">
-    <div class="row" *ngFor="let server of servers; let i = index">
+    <div class="row" *ngFor="let server of servers;">
       <div class="col-sm-9">
         <div
-          [routerLink]="['/servers' , 'Inactive', i]"
+          [routerLink]="['/servers' ,server.id]"
           class="alert alert-success"
           style="
             padding: 6px;
@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="col-sm-3">
-        <button class="btn btn-success" style="border-radius: 0px" (click)="startServer(i)">Start</button>
+        <button class="btn btn-success" style="border-radius: 0px" (click)="startServer(server.id)">Start</button>
       </div>
     </div>
   </div>
