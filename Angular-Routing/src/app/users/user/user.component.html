@@ -1,2 +1,35 @@
-<p>User with ID _ID_ loaded.</p>
-<p>User name is _NAME_</p>
+<div class="panel panel-success" *ngIf="user">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-sm-12">
+        User Info
+        <button
+          style="border-radius: 0px; width: 75px; height: 25px; padding: 0px;"
+          class="btn btn-danger pull-right"
+          *ngIf="user.status === 'active'; else activate"
+          (click)="deactivateUser()"
+        >
+          Deactivate
+        </button>
+        <ng-template #activate>
+          <button 
+          style="border-radius: 0px; width: 75px; height: 25px; padding: 0px;"
+          class="btn btn-success pull-right"
+          (click)="activateUser()"
+          >Activate</button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-5"><b>User Name :</b></div>
+      <div class="col-sm-4">{{ user.name }}</div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-sm-5"><b>User Role :</b></div>
+      <div class="col-sm-4">{{ user.role }}</div>
+    </div>
+  </div>
+</div>

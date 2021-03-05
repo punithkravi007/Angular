@@ -1,17 +1,61 @@
-<div class="row">
-  <div class="col-xs-12 col-sm-4">
-    <div class="list-group">
-      <a
-        href="#"
-        class="list-group-item"
-        *ngFor="let user of users">
-        {{ user.name }}
-      </a>
+<div class="container-fluid">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-sm-4">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Username"
+            [(ngModel)] = "name"
+          />
+        </div>
+        <div class="col-sm-4">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter User Role"
+            [(ngModel)] = "role"
+          />
+        </div>
+        <div class="col-sm-4">
+          <button class="btn btn-success" (click)="addUser()">Add User</button>
+        </div>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <div class="row">
+                <div class="col-sm-12">
+                  <button class="btn btn-default" (click)="getActiveUsers()">Active Users</button>
+                  <button class="btn btn-default" (click)="getInActiveUsers()">In-Active Users</button>
+                </div>
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12">
+                  <div class="list-group">
+                    <a
+                      [routerLink] ="[user.id]"
+                      class="list-group-item"
+                      *ngFor="let user of users"
+                    >
+                      {{ user.name }}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="col-xs-12 col-sm-4">
-    <app-user></app-user>
-  </div>
 </div>
-
-

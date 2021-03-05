@@ -18,7 +18,7 @@ export class EditServerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((request: Params) => {
+    this.route.queryParams.subscribe((request: Params) => {
       let serverId = parseInt(request["id"]);
       this.server = this.serverService.getServerById(serverId);
     });

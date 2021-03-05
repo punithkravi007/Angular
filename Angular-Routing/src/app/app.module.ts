@@ -8,18 +8,37 @@ import { ServersComponent } from "./servers/servers.component";
 import { UserComponent } from "./users/user/user.component";
 import { ServersService } from "./servers/servers.service";
 import { Router, RouterModule, Routes } from "@angular/router";
-import { ActiveServersComponent } from './servers/active-servers/active-servers.component';
-import { InactiveServersComponent } from './servers/inactive-servers/inactive-servers.component';
-import { CreateServersComponent } from './servers/create-servers/create-servers.component';
-import { ServerInfoComponent } from './servers/server-info/server-info.component';
-import { EditServerComponent } from './servers/edit-server/edit-server.component';
+import { ActiveServersComponent } from "./servers/active-servers/active-servers.component";
+import { InactiveServersComponent } from "./servers/inactive-servers/inactive-servers.component";
+import { CreateServersComponent } from "./servers/create-servers/create-servers.component";
+import { ServerInfoComponent } from "./servers/server-info/server-info.component";
+import { EditServerComponent } from "./servers/edit-server/edit-server.component";
+import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { AuthGaurd } from "./auth-gaurd-service";
 
 const appRoutes: Routes = [
-  { path: "", component: HomeComponent },
-  { path: "servers", component: ServersComponent },
-  { path: "servers/:id", component: ServerInfoComponent },
-  { path: "servers/:id/edit", component: EditServerComponent },
-  { path: "users", component: UsersComponent },
+  { path: "", redirectTo: "home", pathMatch: "full" },
+  { path: "home", component: HomeComponent },
+  {
+    path: "servers",
+    canActivate: [AuthGaurd],
+    component: ServersComponent,
+  },
+  {
+    path: "servers/:id",
+    component: ServerInfoComponent,
+    children: [{ path: "edit", component: EditServerComponent }],
+  },
+  {
+    path: "users",
+    component: UsersComponent,
+    canActivateChild: [AuthGaurd],
+    children: [{ path: ":id", component: UserComponent }],
+  },
+  {
+    path: "**",
+    component: PageNotFoundComponent,
+  },
 ];
 
 @NgModule({
@@ -34,6 +53,7 @@ const appRoutes: Routes = [
     CreateServersComponent,
     ServerInfoComponent,
     EditServerComponent,
+    PageNotFoundComponent,
   ],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot(appRoutes)],
   providers: [ServersService],
