@@ -8,18 +8,17 @@ import { ServersService } from "./servers.service";
   styleUrls: ["./servers.component.css"],
 })
 export class ServersComponent implements OnInit {
+  public servers: Server[] = [];
   public activeServers: Server[];
   public inActiveServers: Server[];
 
   constructor(private serversService: ServersService) {}
 
   ngOnInit() {
-    this.activeServers = this.serversService.getActiveServers();
-    this.inActiveServers = this.serversService.getInActiveServers();
-    
+    this.servers = this.serversService.getServers();
+
     this.serversService.onServerChangeEvent.subscribe(() => {
-      this.activeServers = this.serversService.getActiveServers();
-      this.inActiveServers = this.serversService.getInActiveServers();
+      this.servers = this.serversService.getServers();
     });
   }
 }

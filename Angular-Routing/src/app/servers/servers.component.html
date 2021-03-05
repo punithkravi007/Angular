@@ -7,16 +7,19 @@
             <div class="alert alert-warning">
               <app-create-servers></app-create-servers>
             </div>
-            <div class="row">
+            <div class="row" *ngIf="servers.length > 0">
               <div class="col-sm-6">
-                <app-active-servers
-                  [activeServers]="activeServers"
-                ></app-active-servers>
+                <div class="panel panel-info">
+                  <div class="panel-heading">Active/In-Active Servers</div>
+                  <div class="panel-body">
+                    <app-server *ngFor="let server of servers" 
+                    [server]="server"
+                    ></app-server>
+                  </div>
+                </div>
               </div>
               <div class="col-sm-6">
-                <app-inactive-servers
-                [inActiveServers]="inActiveServers"
-                ></app-inactive-servers>
+                <router-outlet></router-outlet>
               </div>
             </div>
           </div>

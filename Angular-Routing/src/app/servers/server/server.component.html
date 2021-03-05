@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-sm-9" [routerLink]="[server.id]">
+    <div
+      [routerLink]="['/servers', server.id]"
+      class="alert alert-success"
+      [ngStyle]="{'border-color' : server.status === 'active' ? 'green' : 'red',
+      'color' : server.status === 'active' ? 'green' : 'red'
+    }"
+      style="
+        padding: 6px;
+        background-color: transparent;
+        width: 294px;
+        border-radius: 0px;
+        cursor: pointer;
+      "
+    >
+      {{ server.name }}
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <button
+      class="btn"
+      [ngClass]="{'btn-success': server.status === 'active','btn-danger': server.status === 'in-active'}"
+      
+      style="border-radius: 0px"
+      (click)="toggleServerStatus()"
+    >
+      Stop
+    </button>
+  </div>
+</div>

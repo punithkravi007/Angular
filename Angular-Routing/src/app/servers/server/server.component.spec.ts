@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InactiveServersComponent } from './inactive-servers.component';
+import { ServerComponent } from './server.component';
 
-describe('InactiveServersComponent', () => {
-  let component: InactiveServersComponent;
-  let fixture: ComponentFixture<InactiveServersComponent>;
+describe('ServerComponent', () => {
+  let component: ServerComponent;
+  let fixture: ComponentFixture<ServerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InactiveServersComponent ]
+      declarations: [ ServerComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InactiveServersComponent);
+    fixture = TestBed.createComponent(ServerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -28,6 +28,10 @@ export class ServersService {
     });
   }
 
+  getServers(): Server[] {
+    return this.servers;
+  }
+
   toggleServerStatus(index: number, status: string) {
     this.servers[index].status = status;
     this.onServerChangeEvent.emit();
