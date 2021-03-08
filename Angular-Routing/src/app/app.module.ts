@@ -14,6 +14,7 @@ import { EditServerComponent } from "./servers/edit-server/edit-server.component
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { AuthGaurd } from "./auth-gaurd-service";
 import { ServerComponent } from "./servers/server/server.component";
+import { ServerResolver } from "./servers/server.resolver";
 
 const appRoutes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -23,7 +24,11 @@ const appRoutes: Routes = [
     canActivate: [AuthGaurd],
     component: ServersComponent,
     children: [
-      { path: ":id", component: ServerInfoComponent },
+      {
+        path: ":id",
+        component: ServerInfoComponent,
+        resolve: { server: ServerResolver },
+      },
       { path: ":id/edit", component: EditServerComponent },
     ],
   },

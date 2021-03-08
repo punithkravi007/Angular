@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Params, Router } from "@angular/router";
+import { ActivatedRoute, Data, Params, Router } from "@angular/router";
 import { Server } from "../server.model";
 import { ServersService } from "../servers.service";
 
@@ -18,12 +18,9 @@ export class ServerInfoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((request: Params) => {
-      let id = parseInt(request["id"]);
-      this.server = this.serverService.getServerById(id);
-      if (this.server === undefined) {
-        this.router.navigate(["servers"]);
-      }
+    this.route.data.subscribe((request: Data) => {
+      this.server = request["server"];
+      console.log(this.server);
       this.isActive = this.server.status === "active" ? true : false;
     });
   }

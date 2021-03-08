@@ -15,7 +15,6 @@ export class ServerComponent implements OnInit {
 
   toggleServerStatus() {
     if (this.server.status === "active") {
-      console.log(this.server.status);
       this.serverService.toggleServerStatus(this.server.id, "in-active");
     } else this.serverService.toggleServerStatus(this.server.id, "active");
   }
