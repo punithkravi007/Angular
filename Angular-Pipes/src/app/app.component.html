@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2">
+      <button class="btn btn-warning" (click)="toggleDateFormat()">
+        Toggle Date Format
+      </button>
+    </div>
+    <div class="col-sm-6">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Filter Servers"
+        [(ngModel)]="serverStatus"
+      />
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-sm-12">
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let server of servers | filterServers:'status':serverStatus"
+          [ngClass]="getStatusClasses(server)"
+        >
+          <span class="badge">
+            {{ server.status }}
+          </span>
+          <strong>{{ server.name | shorten }}</strong> |
+          {{ server.instanceType | uppercase }} |
+          {{ server.started | date: format }} |
+          {{ 10 | exponentialStrength: 3 }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
