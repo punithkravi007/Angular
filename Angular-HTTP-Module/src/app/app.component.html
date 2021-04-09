@@ -1,0 +1,67 @@
+<div class="container-fluid" style="margin-top: 10px">
+  <div class="alert alert-danger" *ngIf="error"><b>Error : </b>{{ error }}</div>
+  <div class="row">
+    <div class="col-sm-5">
+      <div class="panel panel-info">
+        <div class="panel-body">
+          <form #postForm="ngForm" (ngSubmit)="onCreatePost(postForm.value)">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input
+                type="text"
+                class="form-control"
+                id="title"
+                required
+                ngModel
+                name="title"
+              />
+            </div>
+            <div class="form-group">
+              <label for="content">Content</label>
+              <textarea
+                class="form-control"
+                id="content"
+                required
+                ngModel
+                name="content"
+              ></textarea>
+            </div>
+            <button
+              class="btn btn-primary"
+              type="submit"
+              [disabled]="!postForm.valid"
+            >
+              Send Post
+            </button>
+            <button
+              class="btn btn-danger"
+              [disabled]="loadedPosts.length < 1"
+              (click)="onClearPosts()"
+            >
+              Clear Posts
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-7">
+      <table class="table table-bordered" *ngIf="loadedPosts.length >= 1">
+        <thead>
+          <tr>
+            <td>ID</td>
+            <td>Title</td>
+            <td>Content</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let post of loadedPosts">
+            <td>{{ post.id }}</td>
+            <td>{{ post.title }}</td>
+            <td>{{ post.content }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <hr />
+</div>

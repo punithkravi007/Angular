@@ -20,7 +20,7 @@
       <ul class="list-group">
         <li
           class="list-group-item"
-          *ngFor="let server of servers | filterServers:'status':serverStatus"
+          *ngFor="let server of servers | filterServers: 'status':serverStatus"
           [ngClass]="getStatusClasses(server)"
         >
           <span class="badge">
@@ -32,6 +32,23 @@
           {{ 10 | exponentialStrength: 3 }}
         </li>
       </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <input class="form-control" 
+      placeholder="Enter Input Number"
+      [(ngModel)]="inNumber"
+      />
+    </div>
+    <div class="col-sm-2">
+      <input class="form-control" 
+      placeholder="Enter Exponent"
+      [(ngModel)]="exponent"
+      />
+    </div>
+    <div class="col-sm-2">
+      <input class="form-control" readonly [value] = "inNumber | exponentialStrength: exponent" />
     </div>
   </div>
 </div>

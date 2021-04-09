@@ -8,6 +8,8 @@ import { Component } from "@angular/core";
 export class AppComponent {
   toggle: boolean = false;
   serverStatus : string = '';
+  inNumber : any = 0;
+  exponent : any = 0;
 
   servers = [
     {
