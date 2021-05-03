@@ -4,7 +4,7 @@
     <div class="col-sm-5">
       <div class="panel panel-info">
         <div class="panel-body">
-          <form #postForm="ngForm" (ngSubmit)="onCreatePost(postForm.value)">
+          <form #postForm="ngForm" >
             <div class="form-group">
               <label for="title">Title</label>
               <input
@@ -30,6 +30,7 @@
               class="btn btn-primary"
               type="submit"
               [disabled]="!postForm.valid"
+              (click)="onCreatePost(postForm.value)"
             >
               Send Post
             </button>

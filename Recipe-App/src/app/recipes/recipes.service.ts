@@ -6,6 +6,9 @@ import { Recipe } from './recipe.model';
   providedIn: 'root',
 })
 export class RecipeService {
+
+  @Output() recipeUpdateEvent = new EventEmitter<void>();
+
   recipeList: Recipe[] = [
     new Recipe(
       'Test Recipe-01',
@@ -33,8 +36,12 @@ export class RecipeService {
     ),
   ];
 
-  @Output() displayRecipeInfoEvent = new EventEmitter<Recipe>();
-  displayRecipeInfo(recipe: Recipe) {
-    this.displayRecipeInfoEvent.emit(recipe);
+  getRecipieById(id: number): Recipe {
+    return this.recipeList[id];
+  }
+
+  updateRecipe(id: number, recipe: Recipe) {
+    this.recipeList[id] = recipe;
+    this.recipeUpdateEvent.emit();
   }
 }

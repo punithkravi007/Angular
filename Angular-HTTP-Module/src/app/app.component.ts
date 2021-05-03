@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
   onCreatePost(postData: Post) {
     this.postService.createStoryPost(postData).subscribe(
       (responseData) => {
+        console.log(responseData);
         this.error = "";
         this.fetchPosts();
       },

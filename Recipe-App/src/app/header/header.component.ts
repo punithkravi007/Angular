@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-header',
@@ -6,13 +7,21 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  @Output() toggleScreenEvent = new EventEmitter<string>();
+  isLoggedIn: boolean = false;
+  constructor(private authService: AuthService) {}
 
-  constructor() {}
+  ngOnInit(): void {
+    this.isLoggedIn = this.authService.loggedIn;
+    this.authService.loginEvent.subscribe(() => {
+      this.isLoggedIn = this.authService.loggedIn;
+    });
+  }
 
-  ngOnInit(): void {}
+  login() {
+    this.authService.login();
+  }
 
-  toggleScreen(feature: string) {
-    this.toggleScreenEvent.emit(feature);
+  logout() {
+    this.authService.logout();
   }
 }

@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <div class="panel panel-default">
+    <div class="panel-heading"></div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-3"><b>Recipe Name : </b></div>
+        <div class="col-sm-9">
+          <!-- <input  class="form-control" [(ngModel)] ="recipe.name" /> -->
+          <input [(ngModel)]="recipeId">
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-sm-3"><b>Recipe Description : </b></div>
+        <div class="col-sm-9">
+          <textarea class="form-control" rows="6" >{{ recipe.description }}</textarea>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-sm-2">
+          <button class="btn btn-info" (click)="updateRecipe()">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
