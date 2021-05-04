@@ -1,10 +1,8 @@
-import { Ingredient } from '../ingredient/ingredient.model';
-
 export class Recipe {
   constructor(
-    private name: string,
-    private description: string,
-    private image: string,
-    private ingredients: Ingredient[]
+    public id?: number,
+    public name?: string,
+    public url?: string,
+    public description?: string
   ) {}
 }

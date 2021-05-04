@@ -1,0 +1,122 @@
+<div class="card" style="padding: 10px; margin-top: 10px">
+  <h2>Add Recipe Here</h2>
+  <form #recipe="ngForm" class="" style="margin-top: 20px">
+    <div class="form-group">
+      <label for="uname">Recipe Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="recipe"
+        placeholder="Enter Recipe Name"
+        name="name"
+        ngModel
+        #recipeName = "ngModel"
+        required
+      />
+      <span *ngIf="!recipeName.valid && recipeName.touched"
+      style="color: red;
+      float: right;
+      "
+      >Recipe Name is Required</span>
+    </div>
+    <div class="form-group">
+      <label for="pwd">Recipe Image URL:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="image_url"
+        [(ngModel)]="imageUrl"
+        placeholder="Enter/Paste Image URL Here"
+        name="url"
+        ngModel
+        #recipeURL = "ngModel"
+        required
+      />
+      <span *ngIf="!recipeURL.valid && recipeURL.touched"
+      style="color: red;
+      float: right;
+      ">Recipe Image URL is Required</span>
+    </div>
+    <div class="form-group" *ngIf="imageUrl">
+      <img
+        style="width: 100%"
+        [src]="imageUrl"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="uname">Recipe Description:</label>
+      <textarea 
+      class="form-control"
+      name = "description"
+      required
+      ngModel
+      #recipeDesciption = "ngModel"
+      ></textarea>
+      <span *ngIf="!recipeDesciption.valid && recipeDesciption.touched"
+      style="color: red;
+      float: right;
+      ">Recipe Description is Required</span>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-sm-4 ingredient">
+        <span
+          style="background-color: lavender; border-radius: 5px; padding: 5px"
+          class="label label-primary"
+          >Apple</span
+        >
+      </div>
+      <div class="col-sm-4 ingredient">
+        <span
+          style="background-color: lavender; border-radius: 5px; padding: 5px"
+          class="label label-primary"
+          >Green Chilly</span
+        >
+      </div>
+      <div class="col-sm-4 ingredient">
+        <span
+          style="background-color: lavender; border-radius: 5px; padding: 5px"
+          class="label label-primary"
+          >Cabbage</span
+        >
+      </div>
+      <div class="col-sm-4 ingredient">
+        <span
+          style="background-color: lavender; border-radius: 5px; padding: 5px"
+          class="label label-primary"
+          >Onion</span
+        >
+      </div>
+      <div class="col-sm-4 ingredient">
+        <span
+          style="background-color: lavender; border-radius: 5px; padding: 5px"
+          class="label label-primary"
+          >Tomato</span
+        >
+      </div>
+      <div class="col-sm-4 ingredient">
+        <span
+          style="background-color: lavender; border-radius: 5px; padding: 5px"
+          class="label label-primary"
+          >Green Leaf</span
+        >
+      </div>
+      <div class="col-sm-4 ingredient">
+        <span
+          style="background-color: lavender; border-radius: 5px; padding: 5px"
+          class="label label-primary"
+          >Carrot</span
+        >
+      </div>
+    </div>
+    <hr />
+    <button 
+    type="button" 
+    (click)="addRecipe()" 
+    [disabled] = "!recipe.valid"
+    class="btn btn-primary">
+      Submit
+    </button>
+  </form>
+</div>

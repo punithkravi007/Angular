@@ -1,0 +1,23 @@
+.wrapper {
+  text-align: center;
+}
+
+.button {
+  position: absolute;
+  top: 50%;
+}
+
+.w-100 {
+  width: 100% !important;
+  border-radius: 15px;
+}
+
+.shadow {
+  box-shadow: 0 0 5px 1px lightgrey !important;
+  background-color: white;
+}
+
+.selected-recipe{
+  background-color: whitesmoke;
+  box-shadow: 1px 1px 10px 1px darkgrey !important;
+}

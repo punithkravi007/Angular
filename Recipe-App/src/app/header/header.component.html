@@ -1,21 +1,17 @@
-<div class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a routerLink="" class="navbar-brand">Recipe Book</a>
-    </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li>
-          <a [routerLink]="['recipes']">Recipe</a>
-        </li>
-        <li>
-          <a [routerLink]="['shopping-list']">Shopping List</a>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="isLoggedIn" (click)="logout()"><a style="cursor: pointer;"><span class="glyphicon glyphicon-user" ></span>&nbsp;Logout</a></li>
-        <li *ngIf="!isLoggedIn" (click)="login()"><a style="cursor: pointer;"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Login</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a class="navbar-brand">Recipe App</a>
+  <ul class="navbar-nav">
+    <li class="nav-item" routerLinkActive="active" *ngIf="isAuthenticated">
+      <a class="nav-link" [routerLink]="['recipes']">Recipes</a>
+    </li>
+    <li class="nav-item" routerLinkActive="active" *ngIf="isAuthenticated">
+      <a class="nav-link" [routerLink]="['shoppingList']">Shopping List</a>
+    </li>
+    <li class="nav-item" routerLinkActive="active" *ngIf="!isAuthenticated">
+      <a class="nav-link" [routerLink]="['auth']">Authentication</a>
+    </li>
+    <li class="nav-item" *ngIf="isAuthenticated">
+      <a style="cursor: pointer;" class="nav-link" (click)="logout()">Logout</a>
+    </li>
+  </ul>
+</nav>

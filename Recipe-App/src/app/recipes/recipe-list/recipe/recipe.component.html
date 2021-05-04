@@ -1,0 +1,22 @@
+<div
+  class="row shadow"
+  style="margin: 10px; cursor: pointer"
+  [routerLink]="[recipe.id]"
+  appRecipe
+>
+  <div class="col-md-6 mb-md-0 p-md-4">
+    <img
+      [src]="recipe.url"
+      style="width: 80% !important"
+      class="w-100"
+      sty
+      alt="..."
+    />
+  </div>
+  <div class="col-md-6 position-static p-4 pl-md-0">
+    <h5 class="mt-0">{{ recipe.name }}</h5>
+    <p>
+      {{ recipe.description | descriptionLimiter: 120 }}
+    </p>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="card" style=" margin-top: 10px">
+  <img [src]="recipe.url" class="card-img-top" alt="..." />
+  <div class="card-body">
+    <h5 class="card-title">{{ recipe.name }}</h5>
+    <p class="card-text">
+      {{ recipe.description }}
+    </p>
+   <a [routerLink]="['edit']" class="btn btn-info" style="width: 48%;">Edit</a> | 
+   <a (click)="deleteRecipe()" class="btn btn-danger" style="width: 48%;">Delete</a>
+  </div>
+</div>

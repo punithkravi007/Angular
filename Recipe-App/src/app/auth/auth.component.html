@@ -1,0 +1,130 @@
+<div class="container">
+  <div
+    id="loginbox"
+    style="
+      margin-top: 50px;
+      border: 1px solid gainsboro;
+      box-shadow: 0px 0px 20px 0px lightblue;
+    "
+    class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2"
+  >
+  <div style="text-align: center;"
+  *ngIf="isLoading"
+  >
+    <app-spinner></app-spinner>
+  </div>
+    <div class="panel panel-info"
+    *ngIf="!isLoading"
+    >
+      <div
+        class="panel-heading"
+        style="
+          padding: 10px;
+          background-color: #bce8f1;
+          margin-top: 10px;
+          text-align: center;
+        "
+      >
+        <div class="panel-title">Sign In</div>
+        <div
+          style="float: right; font-size: 80%; position: relative; top: -10px"
+        ></div>
+      </div>
+      <div
+      *ngIf="isError"
+        class="panel-heading"
+        style="
+          padding: 10px;
+          margin-top: 10px;
+        "
+        [ngStyle]="{backgroundColor : resposneColor}"
+      >
+        <div class="panel-title" style="text-align: center;">
+          <p><b>{{message}}</b></p>
+        </div>
+        <div
+          style="float: right; font-size: 80%; position: relative; top: -10px"
+        ></div>
+      </div>
+
+      <div style="padding-top: 30px" class="panel-body">
+        <div
+          style="display: none"
+          id="login-alert"
+          class="alert alert-danger col-sm-12"
+        ></div>
+
+        <form
+          id="loginform"
+          class="form-horizontal"
+          role="form"
+          #loginForm="ngForm"
+        >
+          <div class="input-group">
+            <div class="form-group" style="width: 100%">
+              <input
+                id="login-username"
+                type="text"
+                class="form-control"
+                name="email"
+                ngModel
+                #name="ngModel"
+                value=""
+                required
+                placeholder="username or email"
+              />
+              <span
+                style="float: right; color: red"
+                *ngIf="!name.valid && name.touched"
+                >Please enter valid username</span
+              >
+            </div>
+          </div>
+
+          <div style="margin-bottom: 25px" class="input-group">
+            <div class="form-group" style="width: 100%">
+              <input
+                id="login-password"
+                type="password"
+                class="form-control"
+                name="password"
+                ngModel
+                required
+                #password="ngModel"
+                placeholder="password"
+              />
+              <span
+                style="float: right; color: red"
+                *ngIf="!password.valid && password.touched"
+                >Please enter password</span
+              >
+            </div>
+          </div>
+          <div style="margin-top: 10px" class="form-group">
+            <div class="col-sm-12">
+              <button
+                [disabled]="!loginForm.valid"
+                id="btn-login"
+                style="width: 48%"
+                class="btn btn-success"
+                (click)="login()"
+              >
+                Login
+              </button>
+              |
+              <button
+                [disabled]="!loginForm.valid"
+                id="btn-login"
+                style="width: 48%"
+                class="btn btn-info"
+                (click)="register()"
+              >
+                Register
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

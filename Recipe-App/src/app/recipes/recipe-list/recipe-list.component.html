@@ -1,0 +1,9 @@
+<div class="row" *ngIf="!isLoading">
+  <app-recipe *ngFor="let recipe of recipes" [recipe]="recipe"></app-recipe>
+</div>
+<div class="row" *ngIf="isLoading" style="margin-top: 15%;">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+    <app-spinner></app-spinner>
+  </div>
+</div>

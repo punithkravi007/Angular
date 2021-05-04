@@ -1,23 +1,38 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h4 style="align-self: center"><b>Recipe Section</b></h4>
-  </div>
-  <div class="panel-body">
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="row">
-          <div class="col-xs-12">
-            <app-recipe
-              *ngFor="let recipeItem of recipeList; let i=index"
-              [routerLink]="[i]"
-              [recipe]="recipeItem"
-            ></app-recipe>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <router-outlet></router-outlet>
-      </div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <a
+        class="btn btn-success"
+        style="border-radius: 0px"
+        [routerLink]="['add']"
+      >
+        Add Recipie
+      </a>
     </div>
+  </div>
+</div>
+<div
+*ngIf="isError"
+class="card" style="border-color: red; background-color: antiquewhite">
+  <div class="card-body">
+    <ul>
+      <li>
+        <b>Message :</b> {{custom_error_message}}
+      </li>
+      <li>
+        <b>Root Cause :</b> {{error.message}}
+      </li>
+      <li><b>Name :</b> {{error.name}}</li>
+      <li><b>Status Code :</b> {{error.status}}</li>
+      <li><b>Status Text :</b> {{error.statusText}}</li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-7" style="border-right: 1px solid lightgray">
+    <app-recipe-list (errorEmitter)="onError($event)"></app-recipe-list>
+  </div>
+  <div class="col-sm-5">
+    <router-outlet></router-outlet>
   </div>
 </div>

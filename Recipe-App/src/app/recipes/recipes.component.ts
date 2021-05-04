@@ -1,6 +1,6 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Recipe } from './recipe.model';
-import { RecipeService } from './recipes.service';
+import { RecipeService } from './recipe.service';
 
 @Component({
   selector: 'app-recipes',
@@ -8,14 +8,19 @@ import { RecipeService } from './recipes.service';
   styleUrls: ['./recipes.component.css'],
 })
 export class RecipesComponent implements OnInit {
-  recipeList: any;
+  isError: boolean = false;
+  error: HttpErrorResponse;
+  custom_error_message : string;
+
   constructor(private recipeService: RecipeService) {}
-  ngOnInit(): void {
-    this.recipeList = this.recipeService.recipeList;
-    this.recipeService.recipeUpdateEvent.subscribe(() => {
-      this.recipeList = this.recipeService.recipeList;
-      console.log(this.recipeList);
-      
-    });
+
+  ngOnInit(): void {}
+
+  onError(error: HttpErrorResponse) {
+    if (error != null) {
+      this.isError = true;
+      this.error = error;
+      this.custom_error_message = error["custom_message"]
+    }
   }
 }
