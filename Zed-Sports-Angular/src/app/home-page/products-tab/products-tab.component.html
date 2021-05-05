@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row">
+    <div class="products-grid">
+      <div class="col-md-12">
+        <div class="std">
+          <div class="home-tabs wow bounceInUp animated">
+            <div class="producttabs">
+              <div id="thm_producttabs1" class="thm-producttabs">
+                <div class="thm-pdt-container">
+                  <div class="thm-pdt-nav">
+                    <ul class="pdt-nav">
+                      <li
+                        class="item-nav tab-loaded tab-nav-actived"
+                        data-type="order"
+                        data-catid=""
+                        data-orderby="best_sales"
+                        data-href="pdt_best_sales"
+                      >
+                        <span class="title-navi">Best Seller</span>
+                      </li>
+                      <li
+                        class="item-nav"
+                        data-type="order"
+                        data-catid=""
+                        data-orderby="new_arrivals"
+                        data-href="pdt_new_arrivals"
+                      >
+                        <span class="title-navi">New Arrivals</span>
+                      </li>
+                      <li
+                        class="item-nav"
+                        data-type="order"
+                        data-catid=""
+                        data-orderby="featured"
+                        data-href="pdt_featured"
+                      >
+                        <span class="title-navi">Featured</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="thm-pdt-content wide-5">
+                    <div
+                      class="pdt-content is-loaded pdt_best_sales tab-content-actived"
+                    >
+                      <ul class="pdt-list products-grid zoomOut play">
+                        <app-tab-product
+                          *ngFor="let best_item of best_seller_products"
+                          [product]="best_item"
+                        ></app-tab-product>
+                      </ul>
+                    </div>
+                    <div class="pdt-content pdt_new_arrivals is-loaded">
+                      <ul class="pdt-list products-grid zoomOut play">
+                        <app-tab-product
+                          *ngFor="let new_item of new_arrival_products"
+                          [product]="new_item"
+                        ></app-tab-product>
+                      </ul>
+                    </div>
+                    <div class="pdt-content pdt_featured is-loaded">
+                      <ul class="pdt-list products-grid zoomOut play">
+                        <app-tab-product
+                          *ngFor="let featured_item of featured_products"
+                          [product]="featured_item"
+                        ></app-tab-product>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
