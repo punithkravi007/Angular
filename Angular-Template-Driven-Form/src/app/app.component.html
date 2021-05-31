@@ -1,0 +1,211 @@
+<div
+  class="container-fluid"
+  style="
+    margin-top: 10px;
+    border: 1px solid lightgray;
+    padding: 10px;
+    width: 60%;
+  "
+>
+  <div
+    class="jumbotron jumbotron-fluid"
+    style="background-color: lightgray; padding: 1px"
+  >
+    <div class="container">
+      <h1>{{ title }}</h1>
+      <p>Includes Validation of email and password</p>
+    </div>
+  </div>
+  <hr />
+  <form
+    #signupForm="ngForm"
+    [appMatchPassword]="['password', 'confirmPassword']"
+  >
+    <div class="row" style="width: 100%">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+
+          <input
+            class="form-control"
+            id="firstName"
+            type="text"
+            name="firstName"
+            ngModel
+            #firstName="ngModel"
+            [(ngModel)]="user.firstName"
+            [appValidateName]="['First Name']"
+          />
+          <div
+            style="
+              border: 1px solid red;
+              padding: 5px;
+              margin-top: 1px;
+              background-color: antiquewhite;
+            "
+            *ngIf="!firstName.valid && firstName.touched"
+          >
+            <span *ngIf="firstName.errors?.error">{{
+              firstName.errors.error
+            }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input
+            class="form-control"
+            id="lastName"
+            type="text"
+            name="lastName"
+            ngModel
+            #lastName="ngModel"
+            [appValidateName]="['Last Name']"
+          />
+          <div
+            style="
+              border: 1px solid red;
+              padding: 5px;
+              margin-top: 1px;
+              background-color: antiquewhite;
+            "
+            *ngIf="!lastName.valid && lastName.touched"
+          >
+            <span *ngIf="lastName.errors?.error">{{
+              lastName.errors.error
+            }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div ngModelGroup="address">
+      <div class="row" style="width: 100%">
+        <div class="col-sm-12">
+          <label for="password">Address Line-1</label>
+          <textarea 
+          class="form-control"
+          name = "address"
+          ngModel
+          #address="ngModel"
+          ></textarea>
+        </div>
+      </div>
+      <div class="row" style="width: 100%">
+        <div class="col-sm-4">
+          <label for="password">City</label>
+          <input type="text" 
+          class="form-control" 
+          name="city"
+          ngModel
+          #city="ngModel"
+          />
+        </div>
+        <div class="col-sm-4">
+          <label for="password">State</label>
+          <input 
+          type="text" 
+          class="form-control" 
+          name="state"
+          ngModel
+          #state="ngModel"
+          />
+        </div>
+        <div class="col-sm-4">
+          <label for="password">Country</label>
+          <input type="text" 
+          class="form-control"
+          name="country"
+          ngModel
+          #country="ngModel"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row" style="width: 100%">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            class="form-control"
+            id="email"
+            type="text"
+            name="email"
+            ngModel
+            #email="ngModel"
+            required
+            email
+          />
+          <div
+            style="
+              border: 1px solid red;
+              padding: 5px;
+              margin-top: 1px;
+              background-color: antiquewhite;
+            "
+            *ngIf="!email.valid && email.touched"
+          >
+            <span *ngIf="email.errors?.required">Email is required</span>
+            <span *ngIf="email.errors?.email">Enter a valid email</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="width: 100%">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            class="form-control"
+            type="password"
+            id="password"
+            name="password"
+            ngModel
+            #password="ngModel"
+            required
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row" style="width: 100%">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input
+            class="form-control"
+            id="confirmPassword"
+            type="password"
+            name="confirmPassword"
+            ngModel
+            #confirmPassword="ngModel"
+            required
+          />
+          <div
+            style="
+              border: 1px solid red;
+              padding: 5px;
+              margin-top: 1px;
+              background-color: antiquewhite;
+            "
+            *ngIf="!confirmPassword.valid && confirmPassword.touched"
+          >
+            <span *ngIf="confirmPassword.errors?.required"
+              >Confirm Password is required</span
+            >
+            <span *ngIf="confirmPassword.errors?.passwordMismatch"
+              >Passwords are not matching</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <button (click)="signUpUser()" style="width: 100%" class="btn btn-info">
+          Sign Up
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
